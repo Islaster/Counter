@@ -22,4 +22,7 @@ document.querySelector('.decrease').addEventListener('click', function () {
   if(num < 0){
     document.querySelector('h2').style.color = 'red';
   }
+  if(num === 0){
+    document.querySelector('h2').style.color = 'black';
+  }
 })
