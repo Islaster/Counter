@@ -1,28 +1,25 @@
 'use strict';
-let num = 0;
-document.querySelector('.increase').addEventListener('click',function () {
-  const increase = document.querySelector('.increase');
-  document.querySelector('.increase').style.color = 'green';
-  num++;
-  document.querySelector('h2').textContent = num;
-  if(num > 0){
-    document.querySelector('h2').style.color = 'green';
-  }
+let count = 0;
+
+const btns = document.querySelectorAll('.btn');
+const value = document.querySelector('h2');
+btns.forEach((btn) => {
+  btn.addEventListener('click',function (e) {
+    const styles = e.currentTarget.classList;
+    if(styles.contains('decrease')){
+      count--;
+    }else if(styles.contains('increase')){
+      count++;
+    }else{
+      count = 0;
+    }
+    if(count > 0){
+      value.style.color = 'green';
+    }else if(count < 0){
+      value.style.color = 'red';
+    }else{
+      value.style.color = 'black';
+    }
+    value.textContent = count;
+  })
 });
-document.querySelector('.reset').addEventListener('click', function () {
-  document.querySelector('h2').textContent = 0;
-  document.querySelector('h2').style.color = 'black';
-  document.querySelector('.increase').style.color = 'white';
-  document.querySelector('.decrease').style.color = 'white';
-});
-document.querySelector('.decrease').addEventListener('click', function () {
-  num--;
-  document.querySelector('.decrease').style.color = 'red';
-  document.querySelector('h2').textContent = num;
-  if(num < 0){
-    document.querySelector('h2').style.color = 'red';
-  }
-  if(num === 0){
-    document.querySelector('h2').style.color = 'black';
-  }
-})
